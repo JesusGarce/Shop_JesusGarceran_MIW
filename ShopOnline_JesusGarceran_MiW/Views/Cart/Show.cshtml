@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ShopOnline_JesusGarceran_MiW.Models.Product>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th></th>
+    </tr>
+    @{ 
+        double precioTotal = 0;
+        foreach (var item in Model)
+        {
+          precioTotal = precioTotal + (item.Stock * item.Prize);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prize)
+            </td>
+            <td>
+                <img src="@item.Image" alt="" height="75px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        }
+     }
+
+</table>
+
+<hr />
+<p><b>Precio total: @precioTotal € </b></p>
+<hr />
+<p>@Html.ActionLink("Buy", "Buy")</p>
