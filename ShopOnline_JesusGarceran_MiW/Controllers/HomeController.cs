@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopOnline_JesusGarceran_MiW.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace ShopOnline_JesusGarceran_MiW.Controllers
 {
     public class HomeController : Controller
     {
+        private ShopModelContainer db = new ShopModelContainer();
+
         public ActionResult Index()
         {
-            return View();
+            return View(db.Products.ToList());
         }
 
         public ActionResult About()

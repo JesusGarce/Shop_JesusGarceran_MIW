@@ -4,59 +4,95 @@
     ViewBag.Title = "Show";
 }
 
-<h2>Show</h2>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">@Html.DisplayNameFor(model => model.Image)</td>
+                        <td class="description">@Html.DisplayNameFor(model => model.Name)</td>
+                        <td class="price">@Html.DisplayNameFor(model => model.Prize)</td>
+                        <td class="quantity">@Html.DisplayNameFor(model => model.Stock)</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                            double precioTotal = 0;
+                            double precioArticulo = 0;
+                            foreach (var item in Model)
+                            {
+                                precioArticulo = item.Stock * item.Prize;
+                                precioTotal = precioTotal + precioArticulo;
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="@item.Image" alt="" height="100px"></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                                    <p>Web ID: @Html.DisplayFor(modelItem => item.Id)</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>@Html.DisplayFor(modelItem => item.Prize) €</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_up" href=""> + </a>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="@Html.DisplayFor(modelItem => item.Stock)" autocomplete="off" size="2">
+                                        <a class="cart_quantity_down" href=""> - </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">@precioArticulo €</p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href="@Url.Action("Delete", "Cart", new { id = item.Id }, null)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th></th>
-    </tr>
-    @{ 
-        double precioTotal = 0;
-        foreach (var item in Model)
-        {
-          precioTotal = precioTotal + (item.Stock * item.Prize);
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prize)
-            </td>
-            <td>
-                <img src="@item.Image" alt="" height="75px" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-        }
-     }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
 
-</table>
 
-<hr />
-<p><b>Precio total: @precioTotal € </b></p>
-<hr />
-<p>@Html.ActionLink("Buy", "Buy")</p>
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>Order Resume</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-6"></div>
+
+             <div class="col-sm-6">
+                    <div class="total_area">
+                        @{
+                            double precioCostes = precioTotal + 3.95;
+                        }
+                        <ul>
+                            <li>Cart Sub Total <span>@precioTotal €</span></li>
+                            <li>Eco Tax <span>3.95 €</span></li>
+                            <li>Shipping Cost <span>Free</span></li>
+                            <li>Total <span>@precioCostes €</span></li>
+                        </ul>
+                        <a class="btn btn-default update" href="">Cancel</a>
+                        <a class="btn btn-default check_out" href="@Url.Action("Buy", "Cart")">Buy</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section><!--/#do_action-->
+

@@ -205,7 +205,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Models\Purchase.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
@@ -228,14 +228,31 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\all.css" />
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\about_us.jpg" />
+    <Content Include="Content\Images\bg_border.png" />
+    <Content Include="Content\Images\image1.png" />
+    <Content Include="Content\Images\image2.png" />
+    <Content Include="Content\Images\image3.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\map.png" />
+    <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\sale.png" />
+    <Content Include="Content\Images\searchicon.png" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\prettyPhoto.css" />
+    <Content Include="Content\price-range.css" />
+    <Content Include="Content\responsive.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShopModel.edmx</DependentUpon>
@@ -247,6 +264,7 @@
       <DependentUpon>ShopModel.edmx</DependentUpon>
       <LastGenOutput>ShopModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\all.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\ShopModel.edmx">
@@ -256,17 +274,28 @@
     <Content Include="Models\ShopModel.edmx.diagram">
       <DependentUpon>ShopModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\fontawesome.js" />
+    <Content Include="Scripts\gmaps.js" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\jquery.scrollUp.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\price-range.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

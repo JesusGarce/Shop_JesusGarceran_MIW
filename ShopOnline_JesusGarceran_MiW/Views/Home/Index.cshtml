@@ -1,31 +1,238 @@
-﻿@{
+﻿@model IEnumerable<ShopOnline_JesusGarceran_MiW.Models.Product>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <img src='@Url.Content("~/Content/Images/logo.png")' />
+                                <h2>¡Totto en Papelería Librería ARCO!</h2>
+                                <p>Disfruta de una gran cantidad de artículos de Totto en nuestras tiendas. </p>
+                                
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="@Url.Content("~/Content/Images/image1.png")" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <img src='@Url.Content("~/Content/Images/logo.png")' />
+                                <h2>Libros de texto</h2>
+                                <p>Adquiere tus libros de texto de cada curso en nuestras papelerías </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="@Url.Content("~/Content/Images/image2.png")" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <img src='@Url.Content("~/Content/Images/logo.png")' />
+                                <h2>Articulos de papelería</h2>
+                                <p>Todos los artículos de material escolar y de oficina que necesites los tienes a tu disposición</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="@Url.Content("~/Content/Images/image3.png")" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section><!--/slider-->
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        Backpacks
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="sportswear" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><a href="#">Sports </a></li>
+                                        <li><a href="#">Four wheels </a></li>
+                                        <li><a href="#">Children </a></li>
+                                        <li><a href="#">Adaptable</a></li>
+                                        <li><a href="#">Various </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        Books
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="mens" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><a href="#">Self Help</a></li>
+                                        <li><a href="#">Children</a></li>
+                                        <li><a href="#">Novel</a></li>
+                                        <li><a href="#">Comic</a></li>
+                                        <li><a href="#">Dictionaries</a></li>
+                                        <li><a href="#">Biographies</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Gift items</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Crafts</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Travel goods</a></h4>
+                            </div>
+                        </div>
+                       
+                    </div><!--/category-products-->
+
+                    <div class="brands_products">
+                        <!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"> <span class="pull-right">(50)</span>Totto</a></li>
+                                <li><a href="#"> <span class="pull-right">(56)</span>Alpino</a></li>
+                                <li><a href="#"> <span class="pull-right">(27)</span>Makro Paper</a></li>
+                                <li><a href="#"> <span class="pull-right">(32)</span>Debolsillo</a></li>
+                                <li><a href="#"> <span class="pull-right">(5)</span>Plastidecor</a></li>
+                                <li><a href="#"> <span class="pull-right">(9)</span>Nike</a></li>
+                                <li><a href="#"> <span class="pull-right">(4)</span>Adidas</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
+
+                    <div class="price-range">
+                        <!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well text-center">
+                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+                            <b class="pull-left">€ 0</b> <b class="pull-right">€ 200</b>
+                        </div>
+                    </div><!--/price-range-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="@item.Image" alt="" />
+                                        <h2>@Html.DisplayFor(modelItem => item.Prize) €</h2>
+                                        <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                                        <a href="@Url.Action("Details", "Products", new { id = item.Id }, null)" class="btn btn-default add-to-cart"><i class="fas fa-info-circle"></i> See details</a>
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>@Html.DisplayFor(modelItem => item.Prize) €</h2>
+                                            <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                                            <a href="@Url.Action("Details", "Products", new { id = item.Id }, null)" class="btn btn-default add-to-cart"><i class="fas fa-info-circle"></i> See details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    
+
+                </div><!--features_items-->
+
+                <div class="recommended_items">
+                    <!--recommended_items-->
+                    <h2 class="title text-center">recommended items</h2>
+
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="@item.Image" alt="" />
+                                                        <h2>@Html.DisplayFor(modelItem => item.Prize) €</h2>
+                                                        <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                                                        <a href="@Url.Action("Add", "Cart", new { id = item.Id }, null)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                      
+                            </div>
+                            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div><!--/recommended_items-->
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>

@@ -17,7 +17,17 @@ namespace ShopOnline_JesusGarceran_MiW.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+
+            var res = (from cli in db.Clients
+                       where cli.Email.Equals(User.Identity.Name)
+                       select cli);
+
+            Client c = new Client();
+
+            if (res.Count() != 0)
+                c = res.First();
+
+            return View(db.Orders.Where(o => o.Client.Id == c.Id).ToList());
         }
 
         // GET: Orders/Details/5

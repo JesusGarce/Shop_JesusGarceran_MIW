@@ -4,55 +4,37 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="col-sm-9 padding-right">
+        <div class="product-details">
+            <!--product-details-->
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img src="@Html.DisplayFor(model => model.Image)" height="300px" alt="" />         
+                </div>
+         
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information">
+                    <!--/product-information-->
+                    <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                    <h2>@Html.DisplayFor(model => model.Name)</h2>
+                    <p>Web ID: @Html.DisplayFor(model => model.Id)</p>
+                    <img src="images/product-details/rating.png" alt="" />
+                    <span>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
+                        <span>@Html.DisplayFor(model => model.Prize) €</span>
+                        <a href="@Url.Action("Add", "Cart", new { id = Model.Id }, null)" class="btn btn-default add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to cart
+                            </a>
+</span>
+                    <p><b>Availability:</b> In Stock</p>
+                    <p><b>Condition:</b> New</p>
+                    <p><b>Brand:</b> Totto</p>
+                    <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                </div><!--/product-information-->
+            </div>
+        </div><!--/product-details-->
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Prize)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Prize)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </div>
