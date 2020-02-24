@@ -22,7 +22,7 @@ namespace ShopOnline_JesusGarceran_MiW.Models
     
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
-        public double TotalPrize { get; set; }
+        public double TotalPrice { get; set; }
     
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

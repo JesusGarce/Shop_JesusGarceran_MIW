@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ShopOnline_JesusGarceran_MiW.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li class="active">Admin panel</li>
+            </ol>
+        </div>
+
+        <div class="table-responsive cart_info">
+
+            <h3 class="title text-center">Admin panel</h3>
+            <hr />
+            <p>
+                <a class="btn btn-default check_out" href="@Url.Action("Create", "AdminPanel")">Create new product</a>
+            </p>
+            <hr />
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Stock)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Image)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            </td>
+                            <td>
+                                <a class="btn btn-default check_out" href="@Url.Action("Edit", "AdminPanel", new { id = item.Id })">Edit</a>
+                                <a class="btn btn-default check_out" href="@Url.Action("Delete", "AdminPanel", new { id = item.Id })">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

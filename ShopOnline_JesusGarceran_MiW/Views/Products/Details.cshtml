@@ -23,12 +23,25 @@
                     <img src="images/product-details/rating.png" alt="" />
                     <span>
                         <p>@Html.DisplayFor(model => model.Description)</p>
-                        <span>@Html.DisplayFor(model => model.Prize) €</span>
+                        <span>@Html.DisplayFor(model => model.Price) €</span>
+
+                        @if (Model.Stock != 0) {
                         <a href="@Url.Action("Add", "Cart", new { id = Model.Id }, null)" class="btn btn-default add-to-cart">
                             <i class="fa fa-shopping-cart"></i>
                             Add to cart
-                            </a>
-</span>
+                        </a>
+                        }
+
+                        @if ((Model.Stock < 10) && (Model.Stock > 0))
+                        {
+                            <p><h5 style="color:red;">Quedan pocas unidades</h5></p>
+                        }
+
+                        @if (Model.Stock == 0)
+                        {
+                            <p><h5 style="color:red;">No hay stock</h5></p>
+                        }
+                    </span>
                     <p><b>Availability:</b> In Stock</p>
                     <p><b>Condition:</b> New</p>
                     <p><b>Brand:</b> Totto</p>

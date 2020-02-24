@@ -17,6 +17,7 @@ namespace ShopOnline_JesusGarceran_MiW.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
+            this.Rol = "User";
             this.Orders = new HashSet<Order>();
         }
     
@@ -30,6 +31,7 @@ namespace ShopOnline_JesusGarceran_MiW.Models
         public string Country { get; set; }
         public long PostalCode { get; set; }
         public string CreditCard { get; set; }
+        public string Rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

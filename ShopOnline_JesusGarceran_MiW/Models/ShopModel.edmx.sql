@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/20/2020 22:48:36
+-- Date Created: 02/24/2020 18:36:15
 -- Generated from EDMX file: C:\Users\jesus\source\repos\Shop_JesusGarceran_MIW\ShopOnline_JesusGarceran_MiW\Models\ShopModel.edmx
 -- --------------------------------------------------
 
@@ -18,13 +18,16 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_ClientOrder]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedidos] DROP CONSTRAINT [FK_ClientOrder];
+    ALTER TABLE [dbo].[Orders] DROP CONSTRAINT [FK_ClientOrder];
 GO
 IF OBJECT_ID(N'[dbo].[FK_OrderPurchase]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Purchases] DROP CONSTRAINT [FK_OrderPurchase];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductPurchase]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Purchases] DROP CONSTRAINT [FK_ProductPurchase];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductStock]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stocks] DROP CONSTRAINT [FK_ProductStock];
 GO
 
 -- --------------------------------------------------
@@ -34,14 +37,17 @@ GO
 IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Clients];
 GO
-IF OBJECT_ID(N'[dbo].[Pedidos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pedidos];
+IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Orders];
 GO
-IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Productos];
+IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Products];
 GO
 IF OBJECT_ID(N'[dbo].[Purchases]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Purchases];
+GO
+IF OBJECT_ID(N'[dbo].[Stocks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Stocks];
 GO
 
 -- --------------------------------------------------
@@ -59,7 +65,8 @@ CREATE TABLE [dbo].[Clients] (
     [City] nvarchar(max)  NOT NULL,
     [Country] nvarchar(max)  NOT NULL,
     [PostalCode] bigint  NOT NULL,
-    [CreditCard] nvarchar(max)  NOT NULL
+    [CreditCard] nvarchar(max)  NOT NULL,
+    [Rol] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -67,7 +74,7 @@ GO
 CREATE TABLE [dbo].[Orders] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Date] datetime  NOT NULL,
-    [TotalPrize] float  NOT NULL,
+    [TotalPrice] float  NOT NULL,
     [Client_Id] int  NOT NULL
 );
 GO
@@ -77,7 +84,7 @@ CREATE TABLE [dbo].[Products] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [Prize] float  NOT NULL,
+    [Price] float  NOT NULL,
     [Image] nvarchar(max)  NOT NULL,
     [Stock] int  NOT NULL
 );
@@ -88,6 +95,14 @@ CREATE TABLE [dbo].[Purchases] (
     [Quantity] int  NOT NULL,
     [Id] int IDENTITY(1,1) NOT NULL,
     [Order_Id] int  NOT NULL,
+    [Product_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Stocks'
+CREATE TABLE [dbo].[Stocks] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Store] nvarchar(max)  NOT NULL,
     [Product_Id] int  NOT NULL
 );
 GO
@@ -117,6 +132,12 @@ GO
 -- Creating primary key on [Id] in table 'Purchases'
 ALTER TABLE [dbo].[Purchases]
 ADD CONSTRAINT [PK_Purchases]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Stocks'
+ALTER TABLE [dbo].[Stocks]
+ADD CONSTRAINT [PK_Stocks]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -166,6 +187,21 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProductPurchase'
 CREATE INDEX [IX_FK_ProductPurchase]
 ON [dbo].[Purchases]
+    ([Product_Id]);
+GO
+
+-- Creating foreign key on [Product_Id] in table 'Stocks'
+ALTER TABLE [dbo].[Stocks]
+ADD CONSTRAINT [FK_ProductStock]
+    FOREIGN KEY ([Product_Id])
+    REFERENCES [dbo].[Products]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductStock'
+CREATE INDEX [IX_FK_ProductStock]
+ON [dbo].[Stocks]
     ([Product_Id]);
 GO
 

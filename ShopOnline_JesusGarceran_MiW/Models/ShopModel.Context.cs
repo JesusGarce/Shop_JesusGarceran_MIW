@@ -29,5 +29,6 @@ namespace ShopOnline_JesusGarceran_MiW.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
     }
 }

@@ -12,6 +12,8 @@
         <AssociationConnector Association="OnlineShopModel.ClientOrder" />
         <AssociationConnector Association="OnlineShopModel.OrderPurchase" />
         <AssociationConnector Association="OnlineShopModel.ProductPurchase" />
+        <EntityTypeShape EntityType="OnlineShopModel.Stock" Width="1.5" PointX="8.125" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="OnlineShopModel.ProductStock" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

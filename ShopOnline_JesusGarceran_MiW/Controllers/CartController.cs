@@ -99,7 +99,16 @@ namespace ShopOnline_JesusGarceran_MiW.Controllers
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
 
-                precioTotal = precioTotal + (product.Prize * p.Stock);
+                if (product.Stock < 2)
+                {
+                    Stock stock = new Stock();
+                    stock.Product = product;
+                    stock.Store = "default store";
+
+                    db.Stocks.Add(stock);
+                }
+
+                precioTotal = precioTotal + (product.Price * p.Stock);
 
                 Purchase purchase = new Purchase();
                 purchase.Order = order;
@@ -109,13 +118,16 @@ namespace ShopOnline_JesusGarceran_MiW.Controllers
                 db.Purchases.Add(purchase);
             }
 
-            order.TotalPrize = precioTotal;
-            db.Orders.Add(order);
+            order.TotalPrice = precioTotal;
 
             db.SaveChanges();
         
             ViewBag.Pedido = order;
-            return View("ShowPedido", cart);
+
+            List<Product> cpCart = new List<Product>(cart);
+            cart.Clear();
+
+            return View("ShowPedido", cpCart);
         }
 
         public ActionResult ShowPedido(Cart cart)

@@ -32,7 +32,7 @@
                     <tr class="cart_menu">
                         <td class="image">@Html.DisplayNameFor(model => model.Image)</td>
                         <td class="description">@Html.DisplayNameFor(model => model.Name)</td>
-                        <td class="price">@Html.DisplayNameFor(model => model.Prize)</td>
+                        <td class="price">@Html.DisplayNameFor(model => model.Price)</td>
                         <td class="quantity">@Html.DisplayNameFor(model => model.Stock)</td>
                         <td class="total">Total</td>
                         <td></td>
@@ -44,7 +44,7 @@
                         double precioArticulo = 0;
                         foreach (var item in Model)
                         {
-                            precioArticulo = item.Stock * item.Prize;
+                            precioArticulo = item.Stock * item.Price;
                             precioTotal = precioTotal + precioArticulo;
                             <tr>
                                 <td class="cart_product">
@@ -55,7 +55,7 @@
                                     <p>Web ID: @Html.DisplayFor(modelItem => item.Id)</p>
                                 </td>
                                 <td class="cart_price">
-                                    <p>@Html.DisplayFor(modelItem => item.Prize) €</p>
+                                    <p>@Html.DisplayFor(modelItem => item.Price) €</p>
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
@@ -85,10 +85,10 @@
 
             <div class="total_area">
                 @{
-                    double precioCostes = ped.TotalPrize + 3.95;
+                    double precioCostes = ped.TotalPrice + 3.95;
                 }
                 <ul>
-                    <li>Cart Sub Total <span>@ped.TotalPrize €</span></li>
+                    <li>Cart Sub Total <span>@ped.TotalPrice €</span></li>
                     <li>Eco Tax <span>3.95 €</span></li>
                     <li>Shipping Cost <span>Free</span></li>
                     <li>Total <span>@precioCostes €</span></li>
